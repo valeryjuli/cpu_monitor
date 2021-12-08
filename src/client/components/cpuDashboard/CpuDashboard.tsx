@@ -23,8 +23,7 @@ const initialCpuLoadDataState: CPUDataGlobalState = {
 }
 
 /**
- * Main component that updates every 10s the CPULoadData context with the cpu load data
- * and provides it as context to the dashboard elements.
+ * Main component that updates every 10s the CPULoadData context with the cpu load data.
  */
 const CpuDashboard = () => {
 

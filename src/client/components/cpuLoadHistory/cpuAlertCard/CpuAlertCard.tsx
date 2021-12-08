@@ -6,7 +6,7 @@ function CpuAlertCard(props: CPULoadDataPoint) {
         <div className='cpu-alert-card' >
         <div className={`alert-body ${props.isAlert === CPULoadAlertTypes.OVERLOAD ? 'alert' : 'recovery'}`} >
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                <img className={'alertIcon'} src={`${props.isAlert === CPULoadAlertTypes.OVERLOAD ? 'alert.png' : 'tick.jpg'}`} alt="" />
+                <img className={'alertIcon'} src={`${props.isAlert === CPULoadAlertTypes.OVERLOAD ? 'cpu_load_overload_icon.png' : 'cpu_recovery_icon.jpg'}`} alt="" />
                 <span className={`title ${props.isAlert === CPULoadAlertTypes.OVERLOAD ? 'alert' : 'recovery'}`} >
                     <span>{props.isAlert === CPULoadAlertTypes.OVERLOAD ? ' Overload' : 'Recovery'}</span>
                 </span>

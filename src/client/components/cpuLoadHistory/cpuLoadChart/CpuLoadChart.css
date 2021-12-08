@@ -1,0 +1,24 @@
+.cpu-load-chart {
+    background-color: whitesmoke;
+    border-radius: 5%;
+    flex: 1;
+    max-height: 60vh;
+}
+
+.load-chart-svg {
+    max-height: 100%;
+    max-width: 100%;
+    padding: 1%;
+}
+
+.axis path {
+    fill: none;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+  }
+
+  text {
+    fill: blueviolet;
+    color: black;
+    font-size: 0.7em;
+  }

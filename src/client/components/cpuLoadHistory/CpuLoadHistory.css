@@ -1,0 +1,5 @@
+.cpu-load-history {
+    grid-area: hist;
+    display: flex;
+    flex-direction: column;
+}

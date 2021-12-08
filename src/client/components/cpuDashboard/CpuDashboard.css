@@ -1,0 +1,14 @@
+.cpu-dashboard-container {
+    min-height: 100vh;
+    background-color: #5d5d5d;
+    text-align: center;
+    padding: 1%;
+    box-sizing: border-box;
+
+    display: grid; 
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-rows: repeat(1, 1fr); 
+    gap: 10px 1%;
+    grid-template-areas: 
+    "status status hist hist hist";
+}

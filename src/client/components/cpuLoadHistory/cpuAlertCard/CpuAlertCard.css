@@ -1,0 +1,64 @@
+
+.cpu-alert-card {
+    position: relative;
+    padding: 0 2% 0 2%;
+}
+
+.notification:last-child {
+border-bottom: 1px solid #ddd;
+}
+
+.notification .title {
+display: block;
+font-size: 14px;
+line-height: 45px;
+font-weight: bold;
+}
+
+.alert-body {
+    min-height: 70px;
+    border-radius: 6%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alert-body.alert {
+    background-color: tomato;
+    border-right: 10px solid #f99;
+}
+
+.alert-body.recovery {
+    background-color: rgb(51, 116, 80);
+    color: white;
+    border-right: 10px solid #b3e586;
+}
+
+.title > span {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    background:  rgba(24, 10, 10, 0.267);
+    border-radius: 5%;
+}
+
+.notificationFooter {
+    height: 15px;
+}
+
+.alertIcon {
+    flex: 1;
+    max-height: 25px;
+    max-width: 25px;
+    border-radius: 100%;
+}
+
+.alert-info {
+    flex: 3;
+}
+
+.info {
+    display: block;
+    font-size: 12px;
+}
+  

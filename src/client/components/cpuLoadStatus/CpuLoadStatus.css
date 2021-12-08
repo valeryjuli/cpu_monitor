@@ -1,0 +1,4 @@
+.cpu-load-status {
+    background-color: aqua;
+    grid-area: status;
+}

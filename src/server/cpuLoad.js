@@ -12,8 +12,9 @@ const NUM_CPU = os.cpus().length;
  */
 const getCurrentCpuLoadData = (req, res) => {
   const lastMinuteLoadavg = os.loadavg();
+  console.log(lastMinuteLoadavg[0] / NUM_CPU)
     const cpuLoadPoint = {
-      cpuLoad: (lastMinuteLoadavg[0]) ,
+      cpuLoad: (lastMinuteLoadavg[0]) / NUM_CPU,
       timestamp: new Date(Date.now()),
     }
     res.status(200).send(cpuLoadPoint);
@@ -22,9 +23,11 @@ const getCurrentCpuLoadData = (req, res) => {
 /**
  * Return cpu cores parameters
  */
- const getCpuParameters = (req, res) => {
+ const getUserInfo = (req, res) => {
   const cpuParams = {
-    cpuTotal: NUM_CPU
+    cpuTotal: NUM_CPU,
+    platform: os.platform(),
+    cpus: os.cpus()
   }
   res.status(200).send(cpuParams);
 }
@@ -34,5 +37,5 @@ const getCurrentCpuLoadData = (req, res) => {
  */
 module.exports = (app) => {
   app.get('/cpuLoad', getCurrentCpuLoadData);
-  app.get('/cpuParams', getCpuParameters);
+  app.get('/userInfo', getUserInfo);
 }

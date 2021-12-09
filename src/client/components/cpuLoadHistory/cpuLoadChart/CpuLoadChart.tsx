@@ -107,7 +107,7 @@ function CpuLoadChart(props: CPUDataGlobalState) {
             transform={`translate(${PADDING}, ${VIEWBOX_HEIGHT - PADDING})`}
         />
         <text
-            x={VIEWBOX_WIDTH / 2} y={PADDING / 2} text-anchor="middle" >
+            x={VIEWBOX_WIDTH / 2} y={PADDING / 2} textAnchor="middle" >
             {"CPU Average Load Monitor"}
         </text>
         <text
@@ -125,11 +125,11 @@ function CpuLoadChart(props: CPUDataGlobalState) {
               return (
                   <g key={index}>
                       <rect
-                        width="50" 
+                        width="60" 
                         height="20" 
                         style={{fill:'white', strokeWidth:0, display: index === activeDatapointIndex ? 'block': 'none'}}
-                        x={xScale(new Date(item.timestamp)) - 5}
-                        y={yScale(item.cpuLoad) - 12}
+                        x={xScale(new Date(item.timestamp)) + 10}
+                        y={yScale(item.cpuLoad) - 15}
                         rx={5}>
                         </rect>
                         <text
@@ -139,7 +139,7 @@ function CpuLoadChart(props: CPUDataGlobalState) {
                             x={xScale(new Date(item.timestamp))}
                             y={yScale(item.cpuLoad)}
                         >
-                            <tspan x={xScale(new Date(item.timestamp))}>{index === activeDatapointIndex ? `CPU: ${Math.round(item.cpuLoad)}` : ""}</tspan>
+                            <tspan x={xScale(new Date(item.timestamp)) + 13}>{index === activeDatapointIndex ? `CPU: ${Math.round(item.cpuLoad * 1000) / 1000}` : ""}</tspan>
                         </text>
                       <circle
                           cx={xScale(new Date(item.timestamp)) + PADDING}

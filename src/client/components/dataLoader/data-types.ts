@@ -4,6 +4,7 @@ export enum CPULoadAlertTypes {
     OVERLOAD = 'red-alert',
     RECOVERY = 'green-alert',
 }
+
 export interface CPULoadDataPoint {
     /**
      * Average cpu load at the timestamp
@@ -21,4 +22,16 @@ export interface CPULoadDataPoint {
 
 export type CPUDataGlobalState = {
     cpuLoadData: Queue<CPULoadDataPoint>;
+}
+
+export type CPUInfo = {
+    model: string,
+    speed: number,
+    times: Object,
+}
+
+export type UserInformation = {
+    cpuTotal: number,
+    platform: string,
+    cpus: Array<CPUInfo>
 }

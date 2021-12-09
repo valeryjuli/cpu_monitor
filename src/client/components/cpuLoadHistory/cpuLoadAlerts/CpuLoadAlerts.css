@@ -1,17 +1,17 @@
 .cpu-load-alerts {
-    background-color: gray;
+    background-color: whitesmoke;
     flex: 1;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    border-radius: 5%;
-    margin-top: 2%;
+    justify-content: space-evenly;
+    margin-top: 5px;
     overflow: hidden;
-    max-height: 50vh;
+    max-height: 40vh;
 }
 
 .alerts {
     display: flex;
+    padding: 2%;
     flex-wrap: wrap;
     flex: 1;
     justify-content: center;

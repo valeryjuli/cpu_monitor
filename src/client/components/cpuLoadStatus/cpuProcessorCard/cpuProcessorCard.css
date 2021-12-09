@@ -1,0 +1,14 @@
+
+.cpu-processor-card {
+    display: flex;
+    flex-direction: row;
+    background-color: wheat;
+    justify-content: center;
+    border-radius: 5%;
+    align-items: center;
+}
+
+.cpu-processor-text {
+    display: flex;
+    flex-direction: column;
+}

@@ -27,17 +27,21 @@ function CpuLoadAlerts(props: CPUDataGlobalState) {
 
   return (
     <div className="cpu-load-alerts">
-      {/* <h2>CPU OVERLOAD Alerts</h2> */}
-      <div className='alerts cpu-overload-alerts'>
-        {alertQueue.queue.map((alert: CPULoadDataPoint) => (
-          <CpuAlertCard key={String(alert.timestamp)} {...alert} />
-          ))}
+      <div className='alerts-container'>
+        <h2> CPU Overload Alerts</h2>
+        <div className='alerts cpu-overload-alerts'>
+          {alertQueue.queue.map((alert: CPULoadDataPoint) => (
+            <CpuAlertCard key={String(alert.timestamp)} {...alert} />
+            ))}
       </div>
-        {/* <h2>CPU RECOVERY Alerts</h2> */}
-      <div className='alerts cpu-recovery-alerts'>
-        {recoveryQueue.queue.map((alert: CPULoadDataPoint) => (
+      </div>
+      <div className='alerts-container'>
+        <h2>CPU Recovery Alerts</h2>
+        <div className='alerts cpu-recovery-alerts'>
+          {recoveryQueue.queue.map((alert: CPULoadDataPoint) => (
                   <CpuAlertCard key={String(alert.timestamp)} {...alert} />
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,28 @@
 .cpu-load-status {
-    background-color: aqua;
+    background-color: whitesmoke;
     grid-area: status;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.system-info-card {
+    display: flex;
+    flex-direction: row;
+    background-color: wheat;
+    justify-content: center;
+    border-radius: 5%;
+    align-items: center;
+}
+
+.system-info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.system-cpus-cards {
+    display: flex;
+    flex-direction: column;
 }

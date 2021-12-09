@@ -5,11 +5,7 @@ import { CPULoadAlertTypes, CPULoadDataPoint } from "./data-types";
 /**
 * Threshold to trigger a CPU load alert.
 */
-const CPU_ALERT_THRESHOLD = 25;
-/**
-* Threshold to classify cpu load recovery.
-*/
-const CPU_RECOVERY_THRESHOLD = 3;
+const CPU_ALERT_THRESHOLD = 0.1;
 
 /**
  * Loads CPU average load data points to a dataHistory queue with a specified max length.
@@ -27,8 +23,8 @@ export class CPUDataLoader {
     verifyRecovery(cpuLoad: number) {
         if (this.dataHistory.queue.length > 12) {
             // Datapoint of 2 minutes ago is -12 index
-            const startWindowLoad = this.dataHistory.queue[this.dataHistory.queue.length  - 12].cpuLoad * 100;
-            if (startWindowLoad - cpuLoad > CPU_RECOVERY_THRESHOLD) return true
+            const startWindowLoad = this.dataHistory.queue[this.dataHistory.queue.length  - 12].cpuLoad;
+            if (startWindowLoad > CPU_ALERT_THRESHOLD && cpuLoad < CPU_ALERT_THRESHOLD) return true
             return false;
         }
         return false;
@@ -50,7 +46,7 @@ export class CPUDataLoader {
         return fetch(request)
             .then((response: any) => response.json())
             .then((cpuLoadData: CPULoadDataPoint) => {
-                const currCpuLoad = cpuLoadData.cpuLoad * 100;
+                const currCpuLoad = cpuLoadData.cpuLoad;
                 const cpuLoadDataPoint = {
                     cpuLoad: currCpuLoad,
                     timestamp: cpuLoadData.timestamp,

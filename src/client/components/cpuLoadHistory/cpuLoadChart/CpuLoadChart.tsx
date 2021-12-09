@@ -1,4 +1,4 @@
-import { MouseEvent, useContext, useEffect, useRef, useState } from 'react';
+import { MouseEvent, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import './CpuLoadChart.css';
 import { CPUDataGlobalState, CPULoadDataPoint } from '../../dataLoader/data-types';
@@ -84,6 +84,8 @@ function CpuLoadChart(props: CPUDataGlobalState) {
 
   return (
     <div className="cpu-load-chart">
+      <h1>CPU Average Load Monitor</h1>
+      <span>CPU Average load chart for the last 10min, you can explore the plot with mouse hover.</span>
       <svg
         className='load-chart-svg' 
         viewBox={`0 0 ${VIEWBOX_HEIGHT} ${VIEWBOX_WIDTH}`}
@@ -106,10 +108,6 @@ function CpuLoadChart(props: CPUDataGlobalState) {
             ref={getXAxis}
             transform={`translate(${PADDING}, ${VIEWBOX_HEIGHT - PADDING})`}
         />
-        <text
-            x={VIEWBOX_WIDTH / 2} y={PADDING / 2} textAnchor="middle" >
-            {"CPU Average Load Monitor"}
-        </text>
         <text
             transform={"rotate(-90)"}
             x={0 - VIEWBOX_HEIGHT / 2 } y={PADDING + 10} dy="1em">

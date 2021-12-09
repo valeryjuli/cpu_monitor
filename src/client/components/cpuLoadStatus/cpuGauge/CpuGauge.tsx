@@ -1,14 +1,12 @@
-import { arc, interpolate, pie, PieArcDatum, select } from 'd3';
+import { arc, pie, PieArcDatum, select } from 'd3';
 import { useEffect, useRef } from 'react';
-import { number } from 'yargs';
-import cpuLoad from '../../../../server/cpuLoad';
 import { CPUDataGlobalState } from '../../dataLoader/data-types';
 
-const VIEWBOX_HEIGHT = 500;
-const VIEWBOX_WIDTH = 500;
+const VIEWBOX_HEIGHT = 300;
+const VIEWBOX_WIDTH = 300;
 
 /**
- * Component providing gauge chart
+ * Component providing gauge chart for CPU Average Load
  */
 function CpuGauge(props: CPUDataGlobalState) {
     const wrapperReference = useRef<HTMLDivElement>(null);
@@ -38,19 +36,18 @@ function CpuGauge(props: CPUDataGlobalState) {
       .attr("fill", (instruction, index) => (index === 0 ? "blueviolet" : "#eee"))
       .style(
         "transform",
-        `translate(${VIEWBOX_WIDTH / 2}px, ${VIEWBOX_HEIGHT}px)`
+        `translate(50%, 50%)`
       )
       .attr('d', instruction => arcGenerator(instruction))
-
-    // draw the gauge
-      }
+    }
     
   }, [props]);
+  
   return (
     <div 
         className="cpu-gauge"
         ref={wrapperReference}>
-        <h2>{props.cpuLoadData.queue.length > 0 ? props.cpuLoadData.queue[props.cpuLoadData.queue.length - 1].cpuLoad : 'Loading...'}</h2>
+        <h2>{props.cpuLoadData.queue.length > 0 ? 'LIVE CPU Average Load: ' + Math.round((props.cpuLoadData.queue[props.cpuLoadData.queue.length - 1].cpuLoad) * 10000 ) / 100 + '%': 'Loading...'}</h2>
         <svg 
             ref={svgReference}
             viewBox={`0 0 ${VIEWBOX_HEIGHT} ${VIEWBOX_WIDTH}`}

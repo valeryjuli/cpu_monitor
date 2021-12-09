@@ -2,7 +2,7 @@
 .cpu-processor-card {
     display: flex;
     flex-direction: row;
-    background-color: wheat;
+    background-color: #beb9c36e;
     justify-content: center;
     border-radius: 5%;
     align-items: center;

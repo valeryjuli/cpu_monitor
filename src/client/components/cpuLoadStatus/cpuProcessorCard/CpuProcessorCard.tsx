@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
-import { CPUDataGlobalState, CPUInfo, UserInformation } from '../../dataLoader/data-types';
+import { CPUInfo } from '../../dataLoader/data-types';
 import './cpuProcessorCard.css';
 
+/**
+ * CPU Processor information card 
+ */
 function CpuProcessorCard(props: CPUInfo) {
   return (
     <div className="cpu-processor-card">

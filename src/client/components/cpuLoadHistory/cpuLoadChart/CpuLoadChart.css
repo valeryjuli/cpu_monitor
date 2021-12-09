@@ -1,16 +1,17 @@
 .cpu-load-chart {
   display: flex;
+  flex-direction: column;
     background-color: whitesmoke;
     border-radius: 5%;
     flex: 1;
     max-height: 60vh;
-    position: relative;
-    padding: 5%;
+    position: relative; 
+    align-items: center;
 }
 
 .load-chart-svg {
   width: 100%;
-  max-height: 100%;
+  max-height: 70%;
   /* position: absolute; */
   /* bottom: -20%; */
   padding: 1%;

@@ -6,6 +6,9 @@ import './CpuLoadAlerts.css';
 
 const MAX_DISPLAYED_ALERTS = 8;
 
+/**
+ * Component that displays overload and recovery alerts cards
+ */
 function CpuLoadAlerts(props: CPUDataGlobalState) {
 
   const [alertQueue, setAlertQueue] = useState<Queue<CPULoadDataPoint>>(new Queue(MAX_DISPLAYED_ALERTS));
@@ -29,19 +32,27 @@ function CpuLoadAlerts(props: CPUDataGlobalState) {
     <div className="cpu-load-alerts">
       <div className='alerts-container'>
         <h2> CPU Overload Alerts</h2>
-        <div className='alerts cpu-overload-alerts'>
-          {alertQueue.queue.map((alert: CPULoadDataPoint) => (
-            <CpuAlertCard key={String(alert.timestamp)} {...alert} />
-            ))}
-      </div>
+        { alertQueue.queue.length > 0 ?
+            <div className='alerts cpu-overload-alerts'>
+              {alertQueue.queue.map((alert: CPULoadDataPoint) => (
+                <CpuAlertCard key={String(alert.timestamp)} {...alert} />
+                ))}
+            </div>
+            :
+            <span>No Overload Alerts</span>
+        }
       </div>
       <div className='alerts-container'>
         <h2>CPU Recovery Alerts</h2>
-        <div className='alerts cpu-recovery-alerts'>
-          {recoveryQueue.queue.map((alert: CPULoadDataPoint) => (
-                  <CpuAlertCard key={String(alert.timestamp)} {...alert} />
-          ))}
-        </div>
+        { recoveryQueue.queue.length > 0 ?
+            <div className='alerts cpu-recovery-alerts'>
+              {recoveryQueue.queue.map((alert: CPULoadDataPoint) => (
+                      <CpuAlertCard key={String(alert.timestamp)} {...alert} />
+              ))}
+            </div>
+            :
+            <span>No Recovery Alerts</span>
+        }
       </div>
     </div>
   );

@@ -8,12 +8,13 @@ import './CpuDashboard.css';
 
 /**
  * Maximum number of data points to store on frontend side.
+ * 10min = 600s, 600s / 10s = 60 data points 
  */
 export const MAX_DATA_POINTS = 60;
 /**
  * Frequency in ms to push new data to the history queue.
  */
-export const MONITOR_FREQ = 500;
+export const MONITOR_FREQ = 10000;
 
 /**
  * Start CPU data context value.

@@ -1,11 +1,10 @@
 import { Queue } from "../../../dataStructures/queue";
-import { MAX_DATA_POINTS } from "../cpuDashboard/CpuDashboard";
 import { CPULoadAlertTypes, CPULoadDataPoint } from "./data-types";
 
 /**
 * Threshold to trigger a CPU load alert.
 */
-const CPU_ALERT_THRESHOLD = 0.1;
+const CPU_ALERT_THRESHOLD = 1;
 
 /**
  * Loads CPU average load data points to a dataHistory queue with a specified max length.
@@ -21,18 +20,20 @@ export class CPUDataLoader {
     }
 
     verifyRecovery(cpuLoad: number) {
-        if (this.dataHistory.queue.length > 12) {
-            // Datapoint of 2 minutes ago is -12 index
+        if (this.dataHistory.queue.length > 120) {
+            // Verify that 2min ago CPUAvgLoad > 1 and after that, for at least 2min all CPUAvgLoad < 1
             const startWindowLoad = this.dataHistory.queue[this.dataHistory.queue.length  - 12].cpuLoad;
-            if (startWindowLoad > CPU_ALERT_THRESHOLD && cpuLoad < CPU_ALERT_THRESHOLD) return true
+            const allAverageLoadsBelowTh = this.dataHistory.queue.slice(-120).every((cpuData) => cpuData.cpuLoad < CPU_ALERT_THRESHOLD);
+            if (startWindowLoad > CPU_ALERT_THRESHOLD && cpuLoad < CPU_ALERT_THRESHOLD && allAverageLoadsBelowTh) return true
             return false;
         }
         return false;
     }
 
     verifyOverload(): boolean {
-        if (this.dataHistory.queue.length > 12) {
-            return this.dataHistory.queue.slice(-12).every((cpuData) => cpuData.cpuLoad > CPU_ALERT_THRESHOLD);
+        if (this.dataHistory.queue.length > 120) {
+            // Verify if for the last 2min CPUAvgLoad > 1
+            return this.dataHistory.queue.slice(-120).every((cpuData) => cpuData.cpuLoad > CPU_ALERT_THRESHOLD);
         }
         return false;
     }

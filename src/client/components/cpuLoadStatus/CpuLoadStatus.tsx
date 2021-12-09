@@ -4,6 +4,9 @@ import CpuGauge from './cpuGauge/CpuGauge';
 import './CpuLoadStatus.css';
 import CpuProcessorCard from './cpuProcessorCard/CpuProcessorCard';
 
+/**
+ * Component displaying current Average CPU Load and user information
+ */
 function CpuLoadStatus(props: CPUDataGlobalState) {
 
   const [userInformation, setuserInformation] = useState<UserInformation>({
@@ -32,7 +35,9 @@ useEffect(() => {
 
   return (
     <div className="cpu-load-status">
-      <h1>CPU Load Status</h1>
+      <h1>CPU Load Monitor</h1>
+      <span>Here you will find the relative percentage of CPU load from your system.</span>
+      <span>This monitor allows you to see the latest alerts of overload and recovery of the system.</span>
       <CpuGauge {...props}/>
       <div className='system-info-card'>
         <img src="cpu-info-icon.png" style={{padding: '8px', borderRadius: '50%', height: '35px', width: '35px'}}></img>

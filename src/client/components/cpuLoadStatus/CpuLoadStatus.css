@@ -11,10 +11,11 @@
 .system-info-card {
     display: flex;
     flex-direction: row;
-    background-color: wheat;
+    background-color: #b988e76e;
     justify-content: center;
     border-radius: 5%;
     align-items: center;
+    margin-top: -15%;
 }
 
 .system-info-text {
@@ -25,4 +26,8 @@
 .system-cpus-cards {
     display: flex;
     flex-direction: column;
+}
+
+span {
+    padding: 0% 5% 0% 5%;
 }

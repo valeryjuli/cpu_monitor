@@ -3,8 +3,10 @@
 This project implements a CPU Average Load Monitor with the following capabilities:
 
 - Monitor on a D3 Line Chart the evolution of CPU Average Load in the last 10minutes
+- Exploration of chart with mouse tooltip
 - Visualize current CPU Average Load
 - Monitor alerts for overloading and recovery
+- Display current system information such as #cores, model of cores, cores speed and platform
 
 <img src='./public/demo-monitor.PNG'>
 

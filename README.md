@@ -43,6 +43,8 @@ Data is requested from the backend service every 10seconds
 The CPU Average Load is stored on the Frontend application using a Queue. The Queue stores the values of CPU Average Load received for the last 10minutes.
 
 ### Alerting System
+The `MAX_DISPLAYED_ALERTS` located in `src/client/components/cpuLoadHistory/cpuLoadAlerts` sets the maximum number of alerts to display, by default 8.
+
 An OVERLOAD Alert is displayed below the CPU Monitor Chart if:
 > :warning: The CPU Average load has exceeded 1 for 2 minutes or more.
 
@@ -58,5 +60,6 @@ If this dashboard was being built from production I would consider the following
 - The fetching of the backend information needs to be more error-proofed with a better error handling
 - An UI/UX baseline could be defined to unifify cards design, color schema and buttons for a better experience
 - The components need to be tested deeply and under high stress, for example plotting points on a high frequency
+- The configuration of frequency of BE requests, number of points on chart, number of alerts, overload thresholds could be user defined parameters or interactive buttons to add more value to the dashboard
 
 

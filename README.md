@@ -6,6 +6,8 @@ This project implements a CPU Average Load Monitor with the following capabiliti
 - Visualize current CPU Average Load
 - Monitor alerts for overloading and recovery
 
+<img src='./public/demo-monitor.PNG'>
+
 ## How to deploy?
 
 In the project directory run:

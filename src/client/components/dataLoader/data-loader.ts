@@ -20,7 +20,8 @@ export class CPUDataLoader {
     }
 
     verifyRecovery(cpuLoad: number) {
-        if (this.dataHistory.queue.length > 120) {
+        if (this.dataHistory.queue.length > 12) {
+            // 2min = 120s = 12 points
             // Verify that 2min ago CPUAvgLoad > 1 and after that, for at least 2min all CPUAvgLoad < 1
             const startWindowLoad = this.dataHistory.queue[this.dataHistory.queue.length  - 12].cpuLoad;
             const allAverageLoadsBelowTh = this.dataHistory.queue.slice(-120).every((cpuData) => cpuData.cpuLoad < CPU_ALERT_THRESHOLD);
@@ -31,7 +32,7 @@ export class CPUDataLoader {
     }
 
     verifyOverload(): boolean {
-        if (this.dataHistory.queue.length > 120) {
+        if (this.dataHistory.queue.length > 12) {
             // Verify if for the last 2min CPUAvgLoad > 1
             return this.dataHistory.queue.slice(-120).every((cpuData) => cpuData.cpuLoad > CPU_ALERT_THRESHOLD);
         }
